@@ -6,6 +6,9 @@ from flask_socketio import SocketIO
 from flask_cors import CORS
 from config import Config
 from siem.logger import AttackLogger
+from bypass_engine.mutator         import BypassMutator
+from bypass_engine.filter_detector import FilterDetector
+import json
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -47,6 +50,42 @@ def siem_stats():
 def siem_logs():
     limit = request.args.get('limit', 50, type=int)
     return jsonify(logger.get_recent(limit))
+
+mutator  = BypassMutator()
+detector = FilterDetector()
+
+@app.route('/api/bypass/generate', methods=['POST'])
+def generate_bypasses():
+    data    = request.get_json()
+    payload = data.get('payload', '')
+    if not payload:
+        return jsonify({'error': 'No payload provided'}), 400
+    results = mutator.generate_all(payload)
+    return jsonify({'bypasses': results, 'count': len(results)})
+
+@app.route('/api/bypass/detect', methods=['POST'])
+def detect_filters():
+    data     = request.get_json()
+    endpoint = data.get('endpoint', '/api/vuln/ping')
+    result   = detector.probe_endpoint(
+        'http://localhost:5000', endpoint
+    )
+    return jsonify(result)
+
+@app.route('/api/payloads')
+def get_payloads():
+    try:
+        payload_path = os.path.join(
+            os.path.dirname(os.path.dirname(
+                os.path.abspath(__file__)
+            )),
+            'payloads', 'payloads.json'
+        )
+        with open(payload_path) as f:
+            data = json.load(f)
+        return jsonify(data)
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
     socketio.run(app, debug=True, port=5000)
