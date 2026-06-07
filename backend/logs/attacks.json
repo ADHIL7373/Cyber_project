@@ -1,1 +1,62 @@
-[]
+[
+  {
+    "id": 1,
+    "timestamp": "2026-06-07T13:04:40.492706",
+    "endpoint": "ping",
+    "payload": "127.0.0.1; whoami",
+    "output_preview": "Ping simulation completed",
+    "blocked": false,
+    "technique": "raw",
+    "severity": "Critical"
+  },
+  {
+    "id": 2,
+    "timestamp": "2026-06-07T13:06:28.562319",
+    "endpoint": "ping",
+    "payload": "127.0.0.1; whoami",
+    "output_preview": "Ping request could not find host 127.0.0.1;. Please check the name and try again.\r\n",
+    "blocked": false,
+    "technique": "raw",
+    "severity": "Critical"
+  },
+  {
+    "id": 3,
+    "timestamp": "2026-06-07T13:07:54.213643",
+    "endpoint": "ping",
+    "payload": "127.0.0.1; whoami",
+    "output_preview": "Ping request could not find host 127.0.0.1;. Please check the name and try again.\r\n",
+    "blocked": false,
+    "technique": "raw",
+    "severity": "Critical"
+  },
+  {
+    "id": 4,
+    "timestamp": "2026-06-07T13:08:09.922178",
+    "endpoint": "ping",
+    "payload": "127.0.0.1 && ipconfig",
+    "output_preview": "\r\nPinging 127.0.0.1 with 32 bytes of data:\r\nReply from 127.0.0.1: bytes=32 time<1ms TTL=128\r\nReply from 127.0.0.1: bytes=32 time<1ms TTL=128\r\n\r\nPing statistics for 127.0.0.1:\r\n    Packets: Sent = 2, R",
+    "blocked": false,
+    "technique": "raw",
+    "severity": "High"
+  },
+  {
+    "id": 5,
+    "timestamp": "2026-06-07T13:08:29.877445",
+    "endpoint": "ping",
+    "payload": "127.0.0.1 | hostname",
+    "output_preview": "LAPTOP-6E7NL940\r\n",
+    "blocked": false,
+    "technique": "raw",
+    "severity": "High"
+  },
+  {
+    "id": 6,
+    "timestamp": "2026-06-07T13:09:03.445731",
+    "endpoint": "ping",
+    "payload": "192.168.1.1 | hostname",
+    "output_preview": "LAPTOP-6E7NL940\r\n",
+    "blocked": false,
+    "technique": "raw",
+    "severity": "High"
+  }
+]

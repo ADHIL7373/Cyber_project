@@ -12,7 +12,7 @@ import json
 
 app = Flask(__name__)
 app.config.from_object(Config)
-CORS(app, origins=Config.CORS_ORIGINS)
+CORS(app, origins="*")
 socketio = SocketIO(app, cors_allowed_origins="*")
 logger = AttackLogger()
 
