@@ -58,5 +58,65 @@
     "blocked": false,
     "technique": "raw",
     "severity": "High"
+  },
+  {
+    "id": 7,
+    "timestamp": "2026-06-08T09:26:02.457715",
+    "endpoint": "ping",
+    "payload": "127.0.0.1; whoami",
+    "output_preview": "Ping request could not find host 127.0.0.1;. Please check the name and try again.\r\n",
+    "blocked": false,
+    "technique": "raw",
+    "severity": "Critical"
+  },
+  {
+    "id": 8,
+    "timestamp": "2026-06-09T09:04:28.224317",
+    "endpoint": "ping",
+    "payload": "127.0.0.1; whoami",
+    "output_preview": "Ping request could not find host 127.0.0.1;. Please check the name and try again.\r\n",
+    "blocked": false,
+    "technique": "raw",
+    "severity": "Critical"
+  },
+  {
+    "id": 9,
+    "timestamp": "2026-06-09T09:15:03.815194",
+    "endpoint": "ping",
+    "payload": "127.0.0.1; whoami",
+    "output_preview": "Ping request could not find host 127.0.0.1;. Please check the name and try again.\r\n",
+    "blocked": false,
+    "technique": "raw",
+    "severity": "Critical"
+  },
+  {
+    "id": 10,
+    "timestamp": "2026-06-09T09:16:38.318392",
+    "endpoint": "ping",
+    "payload": "127.0.0.1; whoami",
+    "output_preview": "Ping request could not find host 127.0.0.1;. Please check the name and try again.\r\n",
+    "blocked": false,
+    "technique": "raw",
+    "severity": "Critical"
+  },
+  {
+    "id": 11,
+    "timestamp": "2026-06-09T09:16:51.648449",
+    "endpoint": "readfile",
+    "payload": "../../Windows/System32/drivers/etc/hosts",
+    "output_preview": "File access simulation",
+    "blocked": false,
+    "technique": "raw",
+    "severity": "Critical"
+  },
+  {
+    "id": 12,
+    "timestamp": "2026-06-09T09:20:58.277805",
+    "endpoint": "dns",
+    "payload": "google.com | whoami",
+    "output_preview": "laptop-6e7nl940\\asus\nNon-authoritative answer:\n\n",
+    "blocked": false,
+    "technique": "raw",
+    "severity": "Critical"
   }
 ]
